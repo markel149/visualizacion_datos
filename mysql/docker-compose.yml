@@ -1,0 +1,21 @@
+
+version: '3'
+services:  
+  mysql:
+    container_name: mysql
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'rootpassword'
+      ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+# Descomentar linea para carga custom config
+#      - ./conf.d:/etc/mysql/conf.d
+      - ./storage:/var/lib/mysql
+    ports:
+      - 30306:3306
+  grafana:
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+
